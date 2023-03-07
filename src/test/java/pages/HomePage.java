@@ -3,5 +3,5 @@ package pages;
 /**
  * @author Ismail Koembe
  */
-public class HomePage {
+public class HomePage extends BasePage {
 }
