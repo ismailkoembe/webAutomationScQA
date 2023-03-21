@@ -62,20 +62,25 @@ public class LoginSteps {
                 case "tracker user":
                     login.email.sendKeys(PropManager.getProperties(login.env, "trackerUser"));
                     login.password.sendKeys("Qweasdzxc1!");
-                    login.loginButton.click();
+//                    login.loginButton.click();
+                    login.waitAndClick(login.loginButton);
                     break;
                 case "feed user":
                     login.email.sendKeys(PropManager.getProperties(login.env, "feedUser"));
                     login.password.sendKeys("Qweasdzxc1!");
-                    login.loginButton.click();
+//                    login.loginButton.click();
+                    login.waitAndClick(login.loginButton);
                     break;
 
                 case "invalid_user":
                     login.email.sendKeys(PropManager.getProperties(login.env, "invalidUser"));
                     login.password.sendKeys("Qweasdzxc1!");
-                    login.loginButton.click();
+//                    login.loginButton.click();
+                    login.waitAndClick(login.loginButton);
                     break;
-        }
+
+
+            }
 
 
 
@@ -88,6 +93,7 @@ public class LoginSteps {
         Assert.assertTrue(homePage.homeButton.isDisplayed(), "Home button should be visible");
 
     }
+
 
 
 }
