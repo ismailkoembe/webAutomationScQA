@@ -95,5 +95,11 @@ public class LoginSteps {
     }
 
 
+    @And("I login {string} and {string}")
+    public void iLoginAnd(String email, String password) {
+        login.email.sendKeys(email);
+        login.password.sendKeys(password);
+        login.waitAndClick(login.loginButton);
 
+    }
 }
