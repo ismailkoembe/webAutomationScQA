@@ -11,6 +11,8 @@ public class HomePage extends BasePage {
     @FindBy(xpath = "//a[@aria-label='Home (active)']")
     public WebElement homeButton;
 
+    @FindBy(xpath = "//a[@class='mdc-ripple-upgraded mdc-button mdc-button--dense mdc-button--unelevated']//div[@class='mdc-button__ripple']")
+    public WebElement takeRatButton;
 
     public HomePage() {
         PageFactory.initElements(driver, this);
