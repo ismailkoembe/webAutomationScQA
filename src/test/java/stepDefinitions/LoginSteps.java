@@ -3,6 +3,7 @@ package stepDefinitions;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 import lombok.extern.slf4j.Slf4j;
 import org.testng.Assert;
 import pages.HomePage;
@@ -104,4 +105,8 @@ public class LoginSteps {
     }
 
 
+    @When("I handle cookies")
+    public void iHandleCookies() {
+        login.handleCookiesBanner();
+    }
 }

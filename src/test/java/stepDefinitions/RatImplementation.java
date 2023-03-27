@@ -36,29 +36,7 @@ public class RatImplementation {
     public void iTakeRealAgeTest() {
         Assert.assertEquals(ratPage.driver.getCurrentUrl(), "https://you.sharecare.com/you/real-age-test",
                 "I can not see RAT que");
-        while (ratPage.pause.getText().equals("Pause")){
-            /**
-             * In while loop we need to answer all question
-             * Questions have radio button, input text, dropdown menu
-             */
-            if(ratPage.radioButtons.size()>0){
-                System.out.println("Answer with radio button");
-
-            }else if (ratPage.dropDownList.size() >0){
-                System.out.println("Answer with drop down");
-            }else if(ratPage.checkBoxes.size()>0){
-                System.out.println("Answer with checkbox");
-            }else if (ratPage.inputBoxList.size()>0){
-                System.out.println("Answer with inputbox");
-            }
-
-
-
-
-
-
-        }
-
+        ratPage.takeRealAgeTest();
 
     }
 
