@@ -5,6 +5,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.Select;
 
 import java.util.List;
 import java.util.Random;
@@ -26,7 +27,7 @@ public class RatPage extends BasePage{
     public List<WebElement> checkBoxes;
     @FindBy (xpath = "//input")
     public List<WebElement> inputBoxList;
-
+    public static Random rd = new Random();
 
 
     public RatPage() {
@@ -42,8 +43,10 @@ public class RatPage extends BasePage{
 
             if(radioButtons.size()>0){
                 System.out.println("Answer with radio button");
+                answerWithRadioButtons();
             }else if (dropDownList.size() >0){
                 System.out.println("Answer with drop down");
+                answerWithDropDownList();
             }else if(checkBoxes.size()>0){
                 System.out.println("Answer with checkbox");
                 answerWithCheckBoxes();
@@ -58,8 +61,43 @@ public class RatPage extends BasePage{
 
     }
 
+    public void answerWithDropDownList() {
+        //TODO : Improve random integer
+
+        for (int i = 0; i < dropDownList.size(); i++) {
+            Select select = new Select(dropDownList.get(i));
+            log.info("This dropdown has {} options", select.getOptions().size());
+            int index = rd.nextInt(select.getOptions().size()-1)+1;
+            select.selectByIndex(index);
+            log.info("I selected {} options", index);
+        }
+        waitAndClick(next);
+
+    }
+
+    public void answerWithRadioButtons() {
+        //TODO solve stale element exception
+//        int attempts = 0;
+//        int maxAttempts = 2;
+//        while(attempts<maxAttempts){
+            try {
+                int size = radioButtons.size();
+                int index = rd.nextInt(size);
+                if(!radioButtons.get(index).isSelected()){
+//                    radioButtons.get(index).click();
+                    waitUntilPresenceOfRadioButtonAndClick();
+
+                }
+//                attempts++;
+            }catch (Exception e){
+                log.error("Selenium failed to click Radio Button");
+            }
+//        }
+        waitAndClick(next);
+
+    }
+
     public void answerWithCheckBoxes() {
-        Random rd = new Random();
         int attempts = 0;
         int maxAttempts = 2;
         while(attempts<maxAttempts){
