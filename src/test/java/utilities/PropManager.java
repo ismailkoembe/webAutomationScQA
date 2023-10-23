@@ -30,4 +30,9 @@ public class PropManager {
 
 
     }
+
+    public void doSmth(){
+        System.out.println("Mentoring");
+
+    }
 }
